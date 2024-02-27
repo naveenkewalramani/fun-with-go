@@ -1,0 +1,52 @@
+{
+  "name": "fun-with-go Service",
+  "serviceName": "fun-with-go",
+  "env": "dev",
+  "host": "0.0.0.0",
+  "port": 8080,
+  "ownerInfo": {
+    "name": "user",
+    "email": "user",
+    "url": "user"
+  },
+  "data": {
+    "mysql":{
+      "master": {
+        "dsn":     "todolist:todolist@tcp($MYSQL_HOST$:3306)/todolist?parseTime=true&loc=UTC",
+        "maxIdle": 2,
+        "maxOpen": 10,
+        "connMaxLifetime": "1800s"
+      },
+      "slave": {
+        "dsn":     "todolist:todolist@tcp($MYSQL_HOST$:3306)/todolist?parseTime=true&loc=UTC",
+        "maxIdle": 2,
+        "maxOpen": 10,
+        "connMaxLifetime": "1800s"
+      },
+      "masterCircuitBreaker": {
+        "timeoutInMs": 1000
+      },
+      "slaveCircuitBreaker": {
+        "timeoutInMs": 1000
+      }
+    }
+  },
+  "statsd": {
+    "host": "localhost",
+    "port": 8125
+  },
+  "trace": {
+    "host": "localhost",
+    "port": 8126
+  },
+  "logger": {
+    "syslogTag": "structuredlog.todolist",
+    "workerCount": 10,
+    "bufferSize": 10000,
+    "logLevel": 3,
+    "stacktraceLevel": 4,
+    "logFormat": "cglsdebug",
+    "development": true
+  }
+}
+

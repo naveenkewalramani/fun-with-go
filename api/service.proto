@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package funWithGoo;
+
+option go_package = "gitlab.myteksi.net/dakota/fun-with-go/api";
+
+import "google/api/annotations.proto";
+
+// Request is an example request.
+message Request {
+    string value = 1;
+}
+
+// Response is an example response.
+message Response {
+    string value = 1;
+}
+
+// FunWithGo <TODO: add a short description here>
+service FunWithGo {
+    rpc Example(Request) returns (Response) {
+        option (google.api.http) = {
+            post: "/api/v1/example",
+            body: "*",
+        };
+    }
+}
