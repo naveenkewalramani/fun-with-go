@@ -8,3 +8,7 @@ func main() {
 	fmt.Println(Naveen)
 	Adnan := 2
 }
+
+func declaredButNotUsed(str string) {
+	fmt.Println(str)
+}
